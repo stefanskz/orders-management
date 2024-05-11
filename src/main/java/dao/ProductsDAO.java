@@ -15,11 +15,11 @@ import model.Products;
 
 public class ProductsDAO {
     protected static final Logger LOGGER = Logger.getLogger(ProductsDAO.class.getName());
-    private static final String insertStatementString = "INSERT INTO product (productName, price)" + " VALUES (?, ?)";
+    private static final String insertStatementString = "INSERT INTO product (productName, price, productQuantity)" + " VALUES (?, ?, ?)";
     private final static String findStatementString = "SELECT * FROM product where productId = ?";
     private final static String deleteStatString = "DELETE FROM product WHERE productId = ?";
     private final static String findAllStatString = "SELECT * FROM product";
-    private final static String updateStatString = "UPDATE product SET productName = ?, price = ? WHERE productId = ?";
+    private final static String updateStatString = "UPDATE product SET productName = ?, price = ?, productQuantity = ? WHERE productId = ?";
 
 
     public static int insert(Products products) {
@@ -30,6 +30,7 @@ public class ProductsDAO {
             insertStatement = dbConnection.prepareStatement(insertStatementString, Statement.RETURN_GENERATED_KEYS);
             insertStatement.setString(1, products.getProductName());
             insertStatement.setDouble(2, products.getPrice());
+            insertStatement.setLong(3, products.getProductQuantity());
             insertStatement.executeUpdate();
 
             ResultSet rs = insertStatement.getGeneratedKeys();
@@ -52,7 +53,8 @@ public class ProductsDAO {
             updateStat = dbConnection.prepareStatement(updateStatString);
             updateStat.setString(1, products.getProductName());
             updateStat.setDouble(2, products.getPrice());
-            updateStat.setLong(3, products.getProductId());
+            updateStat.setLong(3, products.getProductQuantity());
+            updateStat.setLong(4, products.getProductId());
             updateStat.executeUpdate();
         } catch (SQLException e) {
             LOGGER.log(Level.WARNING, "ProductsDAO: update " + e.getMessage());

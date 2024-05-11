@@ -4,11 +4,19 @@ public class Products {
     private int productId;
     private String productName;
     private Double price;
+    private int productQuantity;
 
     public Products(int productId, String productName, Double price) {
         this.productId = productId;
         this.productName = productName;
         this.price = price;
+    }
+
+    public Products(int productId, String productName, Double price, int productQuantity) {
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        this.productQuantity = productQuantity;
     }
 
     @Override
@@ -42,5 +50,13 @@ public class Products {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public int getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
     }
 }
