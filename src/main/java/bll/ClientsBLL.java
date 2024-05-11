@@ -26,7 +26,7 @@ public class ClientsBLL {
     public Clients findClientById(int id) {
         Clients st = ClientsDAO.findById(id);
         if (st == null) {
-            throw new NoSuchElementException("The client with id =" + id + " was not found!");
+            throw new NoSuchElementException("The client with id = " + id + " was not found!");
         }
         return st;
     }

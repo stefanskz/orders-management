@@ -1,14 +1,14 @@
-import bll.ClientsBLL;
-import model.Clients;
+import model.*;
+import bll.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        Clients clients = new Clients(3, "David", "david@gmail.com");
+        Products products = new Products(2, "Jucarie", 29.5);
 
-        ClientsBLL clientsBLL = new ClientsBLL();
+        ProductsBLL productsBLL = new ProductsBLL();
 
-        clientsBLL.updateClient(clients);
+        productsBLL.updateProduct(products);
 
     }
 }
