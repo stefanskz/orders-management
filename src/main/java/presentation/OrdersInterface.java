@@ -120,10 +120,13 @@ public class OrdersInterface extends JFrame {
                 } else {
                     OrdersBLL ordersBLL = new OrdersBLL();
                     Orders orders = new Orders(0, finalId, orderedProduct.getProductId(), newQuantity);
-                    ordersBLL.insertOrders(orders);
+                    int newOrdersId = ordersBLL.insertOrders(orders);
                     ProductsBLL productsBLL = new ProductsBLL();
                     orderedProduct.setProductQuantity(orderedProduct.getProductQuantity() - newQuantity);
                     productsBLL.updateProduct(orderedProduct);
+                    Bills bills = new Bills(newOrdersId, finalId, orderedProduct.getProductId(), newQuantity, newQuantity * orderedProduct.getPrice());
+                    BillsBLL billsBLL = new BillsBLL();
+                    billsBLL.insertBills(bills);
                     orderRez.setText("Success!");
                 }
             }
