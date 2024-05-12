@@ -17,6 +17,7 @@ public class ProductsDAO {
     protected static final Logger LOGGER = Logger.getLogger(ProductsDAO.class.getName());
     private static final String insertStatementString = "INSERT INTO product (productName, price, productQuantity)" + " VALUES (?, ?, ?)";
     private final static String findStatementString = "SELECT * FROM product where productId = ?";
+    private final static String findProdNameStatString = "SELECT * FROM product where productName = ?";
     private final static String deleteStatString = "DELETE FROM product WHERE productId = ?";
     private final static String findAllStatString = "SELECT * FROM product";
     private final static String updateStatString = "UPDATE product SET productName = ?, price = ?, productQuantity = ? WHERE productId = ?";
@@ -120,6 +121,33 @@ public class ProductsDAO {
             Double price0 = rs.getDouble("price");
             int productId0 = rs.getInt("productId");
             toReturn = new Products(productId0, name0, price0);
+        } catch (SQLException e) {
+            LOGGER.log(Level.WARNING, "ProductsDAO: findById " + e.getMessage());
+        } finally {
+            ConnectionFactory.close(rs);
+            ConnectionFactory.close(findStatement);
+            ConnectionFactory.close(dbConnection);
+        }
+        return toReturn;
+    }
+
+    public static Products findByProdName(String prodName) {
+        Products toReturn = null;
+
+        Connection dbConnection = ConnectionFactory.getConnection();
+        PreparedStatement findStatement = null;
+        ResultSet rs = null;
+        try {
+            findStatement = dbConnection.prepareStatement(findProdNameStatString);
+            findStatement.setString(1, prodName);
+            rs = findStatement.executeQuery();
+            rs.next();
+
+            String name0 = rs.getString("productName");
+            Double price0 = rs.getDouble("price");
+            int productId0 = rs.getInt("productId");
+            int quantity0 = rs.getInt("productQuantity");
+            toReturn = new Products(productId0, name0, price0, quantity0);
         } catch (SQLException e) {
             LOGGER.log(Level.WARNING, "ProductsDAO: findById " + e.getMessage());
         } finally {

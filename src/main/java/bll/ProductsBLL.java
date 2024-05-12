@@ -24,6 +24,10 @@ public class ProductsBLL {
         return st;
     }
 
+    public Products findProductsByName(String name) {
+        return ProductsDAO.findByProdName(name);
+    }
+
     public List<Products> findProducts() {
         return ProductsDAO.find();
     }

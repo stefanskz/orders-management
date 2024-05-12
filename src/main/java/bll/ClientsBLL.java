@@ -31,6 +31,10 @@ public class ClientsBLL {
         return st;
     }
 
+    public Clients findClientByEmails(String email) {
+        return ClientsDAO.findByEmail(email);
+    }
+
     public List<Clients> findClients() {
         return ClientsDAO.find();
     }
