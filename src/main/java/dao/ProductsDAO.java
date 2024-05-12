@@ -120,7 +120,8 @@ public class ProductsDAO {
             String name0 = rs.getString("productName");
             Double price0 = rs.getDouble("price");
             int productId0 = rs.getInt("productId");
-            toReturn = new Products(productId0, name0, price0);
+            int quantity0 = rs.getInt("productQuantity");
+            toReturn = new Products(productId0, name0, price0, quantity0);
         } catch (SQLException e) {
             LOGGER.log(Level.WARNING, "ProductsDAO: findById " + e.getMessage());
         } finally {

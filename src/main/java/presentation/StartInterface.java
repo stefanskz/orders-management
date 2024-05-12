@@ -38,7 +38,8 @@ public class StartInterface extends JFrame {
         buttonOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Order");
+                dispose();
+                new OrdersInterface();
             }
         });
 
@@ -58,5 +59,4 @@ public class StartInterface extends JFrame {
     public static void main(String[] args) {
         startHome();
     }
-
 }
