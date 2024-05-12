@@ -25,6 +25,7 @@ public class Products {
                 "productId=" + productId +
                 ", productName='" + productName + '\'' +
                 ", price=" + price +
+                ", productQuantity=" + productQuantity +
                 '}';
     }
 
@@ -59,4 +60,5 @@ public class Products {
     public void setProductQuantity(int productQuantity) {
         this.productQuantity = productQuantity;
     }
+
 }
