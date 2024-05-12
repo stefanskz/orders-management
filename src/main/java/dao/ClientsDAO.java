@@ -23,6 +23,7 @@ public class ClientsDAO {
     protected static final Logger LOGGER = Logger.getLogger(ClientsDAO.class.getName());
     private static final String insertStatementString = "INSERT INTO client (name, email)" + " VALUES (?, ?)";
     private final static String findStatementString = "SELECT * FROM client where clientId = ?";
+    private final static String findEmailStatString = "SELECT * FROM client where email = ?";
     private final static String deleteStatString = "DELETE FROM client WHERE clientId = ?";
     private final static String findAllStatString = "SELECT * FROM client";
     private final static String updateStatString = "UPDATE client SET name = ?, email = ? WHERE clientId = ?";
@@ -45,6 +46,32 @@ public class ClientsDAO {
             toReturn = new Clients(clientId1, name0, email0);
         } catch (SQLException e) {
             LOGGER.log(Level.WARNING, "ClientsDAO: findById " + e.getMessage());
+        } finally {
+            ConnectionFactory.close(rs);
+            ConnectionFactory.close(findStatement);
+            ConnectionFactory.close(dbConnection);
+        }
+        return toReturn;
+    }
+
+    public static Clients findByEmail(String email) {
+        Clients toReturn = null;
+
+        Connection dbConnection = ConnectionFactory.getConnection();
+        PreparedStatement findStatement = null;
+        ResultSet rs = null;
+        try {
+            findStatement = dbConnection.prepareStatement(findEmailStatString);
+            findStatement.setString(1, email);
+            rs = findStatement.executeQuery();
+            rs.next();
+
+            String name0 = rs.getString("name");
+            String email0 = rs.getString("email");
+            int clientId1 = rs.getInt("clientId");
+            toReturn = new Clients(clientId1, name0, email0);
+        } catch (SQLException e) {
+            LOGGER.log(Level.WARNING, "ClientsDAO: findByEmails " + e.getMessage());
         } finally {
             ConnectionFactory.close(rs);
             ConnectionFactory.close(findStatement);
