@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class StartInterface extends JFrame {
 
-    private JButton buttonClient, buttonProduct, buttonOrder;
+    private JButton buttonClient, buttonProduct, buttonOrder, buttonBill;
 
     public StartInterface() {
         super("Home");
@@ -19,6 +19,7 @@ public class StartInterface extends JFrame {
         buttonClient = new JButton("Clients");
         buttonProduct = new JButton("Products");
         buttonOrder = new JButton("Orders");
+        buttonBill = new JButton("Bills");
         buttonClient.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,9 +44,18 @@ public class StartInterface extends JFrame {
             }
         });
 
+        buttonBill.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new BillsInterface();
+            }
+        });
+
         panel.add(buttonClient);
         panel.add(buttonProduct);
         panel.add(buttonOrder);
+        panel.add(buttonBill);
         add(panel);
 
     }
