@@ -7,7 +7,9 @@ import java.awt.event.ActionListener;
 
 import model.*;
 import bll.*;
-
+/**
+ * User Interface to manage Orders, which is controlled by presentation.Control
+ */
 public class OrdersInterface extends JFrame {
     private JTextField clientIdText, clientNameText;
     private JButton searchId, searchName;
@@ -154,4 +156,5 @@ public class OrdersInterface extends JFrame {
         newRow.add(button);
         row.add(newRow);
     }
+
 }

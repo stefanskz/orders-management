@@ -8,11 +8,8 @@ import bll.validators.EmailValidator;
 import bll.validators.Validator;
 import dao.ClientsDAO;
 import model.Clients;
-
 /**
- * @Author: Technical University of Cluj-Napoca, Romania Distributed Systems
- *          Research Laboratory, http://dsrl.coned.utcluj.ro/
- * @Since: Apr 03, 2017
+ * ClientsBLL Class represents the client logic, using ClientsDAO
  */
 public class ClientsBLL {
 
@@ -53,4 +50,5 @@ public class ClientsBLL {
     public void updateClient(Clients clients) {
         ClientsDAO.update(clients);
     }
+
 }

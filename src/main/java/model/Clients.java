@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Clients is a mask of the database table client
+ */
 public class Clients {
     private int clientId;
     private String name;

@@ -5,7 +5,9 @@ import java.util.NoSuchElementException;
 
 import dao.ProductsDAO;
 import model.Products;
-
+/**
+ * ProductsBLL Class represents the product logic, using ProductsDAO
+ */
 public class ProductsBLL {
 
     public int insertProduct(Products products) {
@@ -35,5 +37,4 @@ public class ProductsBLL {
     public void updateProduct(Products products) {
         ProductsDAO.update(products);
     }
-
 }

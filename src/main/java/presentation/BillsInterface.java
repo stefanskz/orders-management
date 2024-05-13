@@ -10,7 +10,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-
+/**
+ * User Interface to manage Bills, which is controlled by presentation.Control
+ */
 public class BillsInterface extends JFrame {
     private JLabel jLabel;
     private JTextField clientEmail;
@@ -70,5 +72,4 @@ public class BillsInterface extends JFrame {
         setVisible(true);
 
     }
-
 }

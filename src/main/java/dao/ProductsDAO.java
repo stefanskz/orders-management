@@ -13,6 +13,9 @@ import java.util.logging.Logger;
 import connection.ConnectionFactory;
 import model.Products;
 
+/**
+ * ProductsDAO implements the logic of database table product through ConnectionFactory
+ */
 public class ProductsDAO {
     protected static final Logger LOGGER = Logger.getLogger(ProductsDAO.class.getName());
     private static final String insertStatementString = "INSERT INTO product (productName, price, productQuantity)" + " VALUES (?, ?, ?)";
@@ -22,7 +25,12 @@ public class ProductsDAO {
     private final static String findAllStatString = "SELECT * FROM product";
     private final static String updateStatString = "UPDATE product SET productName = ?, price = ?, productQuantity = ? WHERE productId = ?";
 
-
+    /**
+     * Method insert inserts a new product in the table
+     *
+     * @param products Products
+     * @return The new generated productId
+     */
     public static int insert(Products products) {
         Connection dbConnection = ConnectionFactory.getConnection();
         PreparedStatement insertStatement = null;
@@ -47,6 +55,11 @@ public class ProductsDAO {
         return insertedId;
     }
 
+    /**
+     * Method update updates a product after searching it by products.getProductId
+     *
+     * @param products Products
+     */
     public static void update(Products products) {
         Connection dbConnection = ConnectionFactory.getConnection();
         PreparedStatement updateStat = null;
@@ -65,6 +78,11 @@ public class ProductsDAO {
         }
     }
 
+    /**
+     * Method deleteById is deleting a product by productId
+     *
+     * @param productId int
+     */
     public static void deleteById(int productId) {
         Connection dbConnection = ConnectionFactory.getConnection();
         PreparedStatement deleteStat = null;
@@ -80,6 +98,11 @@ public class ProductsDAO {
         }
     }
 
+    /**
+     * Method find is providing all products
+     *
+     * @return List of Objects Products
+     */
     public static List<Products> find() {
         List<Products> toReturn = new ArrayList<>();
         Connection dbConnection = ConnectionFactory.getConnection();
@@ -105,6 +128,12 @@ public class ProductsDAO {
         return toReturn;
     }
 
+    /**
+     * Method findById is searching a product by productId
+     *
+     * @param productId int
+     * @return An object of Class Products
+     */
     public static Products findById(int productId) {
         Products toReturn = null;
 
@@ -132,6 +161,12 @@ public class ProductsDAO {
         return toReturn;
     }
 
+    /**
+     * Method findByProdName is searching a product by prodName
+     *
+     * @param prodName String
+     * @return An object of Class Products
+     */
     public static Products findByProdName(String prodName) {
         Products toReturn = null;
 

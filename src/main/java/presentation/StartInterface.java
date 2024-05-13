@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * User Interface: Start Interface(Home)
+ */
 public class StartInterface extends JFrame {
 
     private JButton buttonClient, buttonProduct, buttonOrder, buttonBill;
@@ -69,4 +71,5 @@ public class StartInterface extends JFrame {
     public static void main(String[] args) {
         startHome();
     }
+
 }

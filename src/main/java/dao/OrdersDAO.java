@@ -13,11 +13,20 @@ import java.util.logging.Logger;
 import connection.ConnectionFactory;
 import model.Orders;
 
+/**
+ * OrdersDAO implements the logic of database table orders through ConnectionFactory
+ */
 public class OrdersDAO {
     protected static final Logger LOGGER = Logger.getLogger(OrdersDAO.class.getName());
     private static final String insertStatementString = "INSERT INTO orders (clientId, productId, quantity)" + " VALUES (?, ?, ?)";
     private static final String findAllStatString = "SELECT * FROM orders";
 
+    /**
+     * Method insert inserts a new order in the table
+     *
+     * @param orders Orders
+     * @return The new generated orderId
+     */
     public static int insert(Orders orders) {
         Connection dbConnection = ConnectionFactory.getConnection();
 
@@ -43,6 +52,11 @@ public class OrdersDAO {
         return insertedId;
     }
 
+    /**
+     * Method find is providing all orders
+     *
+     * @return List of Objects Orders
+     */
     public static List<Orders> find() {
         List<Orders> toReturn = new ArrayList<>();
         Connection dbConnection = ConnectionFactory.getConnection();

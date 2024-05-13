@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Orders is a mask of database table orders
+ */
 public class Orders {
     private int orderId;
     private int clientId;
