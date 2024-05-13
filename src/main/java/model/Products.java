@@ -1,5 +1,7 @@
 package model;
-
+/**
+ * Products is a mask of the database table product
+ */
 public class Products {
     private int productId;
     private String productName;

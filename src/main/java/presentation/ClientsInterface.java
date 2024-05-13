@@ -5,7 +5,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * User Interface to manage Clients, which is controlled by presentation.Control
+ */
 public class ClientsInterface extends JFrame {
 
     private JTextField[] inData;
@@ -111,5 +113,4 @@ public class ClientsInterface extends JFrame {
         clientsTable.setModel(newData);
         setVisible(true);
     }
-
 }

@@ -1,5 +1,6 @@
 package dao;
 
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,9 +15,7 @@ import connection.ConnectionFactory;
 import model.Clients;
 
 /**
- * @Author: Technical University of Cluj-Napoca, Romania Distributed Systems
- *          Research Laboratory, http://dsrl.coned.utcluj.ro/
- * @Since: Apr 03, 2017
+ * ClientsDAO implements the logic of database table client through connectionFactory
  */
 public class ClientsDAO {
 
@@ -28,6 +27,12 @@ public class ClientsDAO {
     private final static String findAllStatString = "SELECT * FROM client";
     private final static String updateStatString = "UPDATE client SET name = ?, email = ? WHERE clientId = ?";
 
+    /**
+     * Method findById is searching a client by clientId
+     *
+     * @param clientId int
+     * @return An object of Class Clients
+     */
     public static Clients findById(int clientId) {
         Clients toReturn = null;
 
@@ -54,6 +59,12 @@ public class ClientsDAO {
         return toReturn;
     }
 
+    /**
+     * Method findByEmail is searching a client by email
+     *
+     * @param email String
+     * @return An object of Class Clients
+     */
     public static Clients findByEmail(String email) {
         Clients toReturn = null;
 
@@ -80,6 +91,12 @@ public class ClientsDAO {
         return toReturn;
     }
 
+    /**
+     * Method insert inserts a new client in table
+     *
+     * @param clients Clients
+     * @return The new generated clientId
+     */
     public static int insert(Clients clients) {
         Connection dbConnection = ConnectionFactory.getConnection();
 
@@ -104,6 +121,11 @@ public class ClientsDAO {
         return insertedId;
     }
 
+    /**
+     * Method deleteById is deleting a client by clientId
+     *
+     * @param clientId int
+     */
     public static void deleteById(int clientId) {
         Connection dbConnection = ConnectionFactory.getConnection();
         PreparedStatement deleteStat = null;
@@ -119,6 +141,11 @@ public class ClientsDAO {
         }
     }
 
+    /**
+     * Method find is providing all clients
+     *
+     * @return List of Objects Clients
+     */
     public static List<Clients> find() {
         List<Clients> toReturn = new ArrayList<>();
         Connection dbConnection = ConnectionFactory.getConnection();
@@ -143,6 +170,11 @@ public class ClientsDAO {
         return toReturn;
     }
 
+    /**
+     * Method update updates a client after searching it by clients.getClientsId
+     *
+     * @param clients Clients
+     */
     public static void update(Clients clients) {
         Connection dbConnection = ConnectionFactory.getConnection();
         PreparedStatement updateStat = null;
@@ -159,4 +191,5 @@ public class ClientsDAO {
             ConnectionFactory.close(dbConnection);
         }
     }
+
 }

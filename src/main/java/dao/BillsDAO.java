@@ -13,12 +13,21 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * BillsDAO implements the logic of database table bill through ConnectionFactory
+ */
 public class BillsDAO {
 
     protected static final Logger LOGGER = Logger.getLogger(ClientsDAO.class.getName());
     private static final String insertStatementString = "INSERT INTO bill (orderId, clientId, productId, productQuantity, totalPrice)" + " VALUES (?, ?, ?, ?, ?)";
     private static final String findClientIdStatString = "SELECT * FROM bill where clientId = ?";
 
+    /**
+     * Method insert inserts a new order in the table
+     *
+     * @param bills Bills
+     * @return The new generated orderId
+     */
     public static int insert(Bills bills) {
         Connection dbConnection = ConnectionFactory.getConnection();
         PreparedStatement insertStatement = null;
@@ -45,6 +54,12 @@ public class BillsDAO {
         return insertedId;
     }
 
+    /**
+     * Method find is providing all orders
+     *
+     * @param clientId0 int
+     * @return List of Objects Bills
+     */
     public static List<Bills> find(int clientId0) {
         List<Bills> toReturn = new ArrayList<>();
         Connection dbConnection = ConnectionFactory.getConnection();
@@ -71,5 +86,4 @@ public class BillsDAO {
         }
         return toReturn;
     }
-
 }

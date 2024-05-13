@@ -5,7 +5,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * User Interface to manage Products, which is controlled by presentation.Control
+ */
 public class ProductsInterface extends JFrame {
     private JTextField[] inData;
     private JButton[] buttons;
@@ -110,5 +112,4 @@ public class ProductsInterface extends JFrame {
         productsTable.setModel(newData);
         setVisible(true);
     }
-
 }

@@ -5,6 +5,9 @@ import dao.BillsDAO;
 
 import java.util.List;
 
+/**
+ * BillsBLL Class represents the bill logic, using BillsDAO
+ */
 public class BillsBLL {
     public int insertBills(Bills bills) {
         return BillsDAO.insert(bills);

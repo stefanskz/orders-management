@@ -1,10 +1,12 @@
 import model.*;
 import bll.*;
+import start.ReflexiveSelection;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Bills bills = new Bills(14, 20, 30, 40, 50.0);
-        BillsBLL billsBLL = new BillsBLL();
-        System.out.println(billsBLL.findAllClientBills(20));
     }
 }
