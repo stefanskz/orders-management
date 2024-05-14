@@ -9,7 +9,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         StaffBLL staffBLL = new StaffBLL();
-        Staff staff = staffBLL.findStaffById(2);
-        System.out.println(staff);
+        Staff staff = new Staff(5, "Alex", "alex@gmail.com");
+        //System.out.println(staffBLL.insertStaff(staff));
+        //staffBLL.updateStaff(staff);
+        //System.out.println(staffBLL.findStaffById(5));
+        staffBLL.deleteStaffById(5);
     }
 }
