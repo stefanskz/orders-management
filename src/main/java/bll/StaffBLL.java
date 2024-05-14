@@ -15,4 +15,16 @@ public class StaffBLL extends AbstractDAO<Staff> {
         return staffDAO.findById(id);
     }
 
+    public void deleteStaffById(int id) {
+        staffDAO.deleteById(id);
+    }
+
+    public int insertStaff(Staff staff) {
+        return staffDAO.absInsert(staff);
+    }
+
+    public void updateStaff(Staff staff) {
+        staffDAO.absUpdate(staff);
+    }
+
 }
