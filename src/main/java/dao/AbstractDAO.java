@@ -13,6 +13,10 @@ import java.util.logging.Logger;
 import connection.ConnectionFactory;
 import start.ReflexiveSelection;
 
+/**
+ * Abstract Data Access to the Database
+ * @param <T> Class
+ */
 public class AbstractDAO<T> {
     protected static final Logger LOGGER = Logger.getLogger(AbstractDAO.class.getName());
     private Class<T> type;
@@ -21,6 +25,12 @@ public class AbstractDAO<T> {
         this.type = type;
     }
 
+    /**
+     * Method which provides the query for update
+     *
+     * @param toUpdate List of Strings
+     * @return String
+     */
     private String updateString(List<String> toUpdate) {
         StringBuilder string = new StringBuilder();
         string.append("UPDATE ");
@@ -42,6 +52,11 @@ public class AbstractDAO<T> {
         return string.toString();
     }
 
+    /**
+     * Method to update an object from any table
+     *
+     * @param toUpdate T
+     */
     public void absUpdate(T toUpdate) {
         List<Object> objectList = new ArrayList<>();
         objectList.add(toUpdate);
@@ -69,6 +84,12 @@ public class AbstractDAO<T> {
         }
     }
 
+    /**
+     * Method which provides the query for delete
+     *
+     * @param toDelete String
+     * @return String
+     */
     private String deleteString(String toDelete) {
         StringBuilder string = new StringBuilder();
         string.append("DELETE ");
@@ -78,6 +99,11 @@ public class AbstractDAO<T> {
         return string.toString();
     }
 
+    /**
+     * Method to delete an object from any table
+     *
+     * @param idToDelete int
+     */
     public void deleteById(int idToDelete) {
         PreparedStatement preparedStatement = null;
         Connection dbConnection = null;
@@ -95,6 +121,12 @@ public class AbstractDAO<T> {
         }
     }
 
+    /**
+     * Method which provides the query for find
+     *
+     * @param field String
+     * @return String
+     */
     private String createSelectQuery(String field) {
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT ");
@@ -105,6 +137,12 @@ public class AbstractDAO<T> {
         return sb.toString();
     }
 
+    /**
+     * Method to find an object from any table
+     *
+     * @param id int
+     * @return Object
+     */
     public T findById(int id) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -127,6 +165,12 @@ public class AbstractDAO<T> {
         return null;
     }
 
+    /**
+     * Method to create an Object
+     *
+     * @param resultSet ResultSet
+     * @return List of Object
+     */
     private List<T> createObjects(ResultSet resultSet) {
         List<T> list = new ArrayList<T>();
         Constructor[] ctors = type.getDeclaredConstructors();
@@ -167,6 +211,12 @@ public class AbstractDAO<T> {
         return list;
     }
 
+    /**
+     * Method which provides the query for insert
+     *
+     * @param toInsert List of Strings
+     * @return String
+     */
     private String insertString(List<String> toInsert) {
         StringBuilder string = new StringBuilder();
         string.append("INSERT ");
@@ -198,6 +248,12 @@ public class AbstractDAO<T> {
         return string.toString();
     }
 
+    /**
+     * Method to insert an object into any table
+     *
+     * @param toInsert T
+     * @return new generated id
+     */
     public int absInsert(T toInsert) {
         List<Object> objectList = new ArrayList<>();
         objectList.add(toInsert);
