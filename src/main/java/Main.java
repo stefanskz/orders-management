@@ -13,6 +13,6 @@ public class Main {
         //System.out.println(staffBLL.insertStaff(staff));
         //staffBLL.updateStaff(staff);
         //System.out.println(staffBLL.findStaffById(5));
-        staffBLL.deleteStaffById(5);
+        //staffBLL.deleteStaffById(5);
     }
 }
